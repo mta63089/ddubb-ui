@@ -1,22 +1,20 @@
 import React from 'react';
+import { Button } from '@/components/ui/Button/Button';
 
-import { Button } from './Button';
-import './header.css';
+export interface User {
+  name?: string;
+}
 
-type User = {
-  name: string;
-};
-
-interface HeaderProps {
-  user?: User;
+export interface HeaderProps {
+  user: User | null;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
 }
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
+export const Header: React.FC<HeaderProps> = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <header>
-    <div className="storybook-header">
+    <div className="wrapper">
       <div>
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
@@ -39,15 +37,22 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
       <div>
         {user ? (
           <>
-            <span className="welcome">
+            {/* snipped for brevity */}
+            <span className="welcome dark:text-white">
               Welcome, <b>{user.name}</b>!
             </span>
-            <Button size="small" onClick={onLogout} label="Log out" />
+            <Button size="sm" onClick={onLogout}>
+              Log Out
+            </Button>
           </>
         ) : (
           <>
-            <Button size="small" onClick={onLogin} label="Log in" />
-            <Button primary size="small" onClick={onCreateAccount} label="Sign up" />
+            <Button size="sm" onClick={onLogin}>
+              Log In
+            </Button>
+            <Button variant="default" size="sm" onClick={onCreateAccount}>
+              Sign Up
+            </Button>
           </>
         )}
       </div>
