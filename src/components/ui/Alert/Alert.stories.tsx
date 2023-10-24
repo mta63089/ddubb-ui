@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Alert, AlertTitle, AlertDescription } from './Alert';
 
-export default { component: Alert };
 const meta = {
   title: 'Alert',
   component: Alert,
 } satisfies Meta<typeof Alert>;
 
-type Story = StoryObj<typeof Alert>;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
@@ -24,9 +24,10 @@ export const Default: Story = {
 export const Destructive: Story = {
   args: {
     variant: 'destructive',
+    iconName: 'warning',
     children: (
       <>
-        <AlertTitle>{'this is a default alert title'}</AlertTitle>
+        <AlertTitle>{'this is a destruction alert title'}</AlertTitle>
         <AlertDescription>{'this is a default alert description'}</AlertDescription>
       </>
     ),

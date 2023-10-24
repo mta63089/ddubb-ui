@@ -44,8 +44,8 @@ const iconMap = {
 };
 
 const iconSizeMap = {
-  xs: 'w-1 h-1',
-  sm: 'w-2 h-2',
+  xs: 'w-2 h-2',
+  sm: 'w-3 h-3',
   md: 'w-4 h-4',
   lg: 'w-6 h-6',
   xl: 'w-8 h-8',

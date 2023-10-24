@@ -13,8 +13,8 @@ export const fontSans = FontSans({
 
 export const SharedDefaults = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className={cn('bg-background font-sans antialiased', fontSans.variable)}>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <div className={cn('dark bg-background font-sans antialiased', fontSans.variable)}>
+      <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
         {children}
       </ThemeProvider>
     </div>
