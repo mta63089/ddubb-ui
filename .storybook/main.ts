@@ -10,6 +10,7 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
     '@storybook/addon-themes',
+    '@storybook/addon-backgrounds',
     '@storybook/addon-styling-webpack',
     {
       name: '@storybook/addon-styling-webpack',

@@ -12,6 +12,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     iconName: 'info',
+    animation: 'fade-in-3s',
     children: (
       <>
         <AlertTitle>{'Did you know?'}</AlertTitle>

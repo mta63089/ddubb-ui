@@ -14,7 +14,7 @@ import {
   InfoCircledIcon,
 } from '@radix-ui/react-icons';
 import { cn } from '@/lib/utils';
-import { Animations, useAnimation } from '@/lib/animations';
+import { useAnimation } from '@/lib/animations';
 
 const alertVariants = cva(
   'relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',
@@ -59,16 +59,21 @@ export interface AlertProps
     VariantProps<typeof alertVariants> {
   iconName?: keyof typeof iconMap;
   iconSize?: keyof typeof iconSizeMap;
-  animation?: Animations;
+  animation?: string;
 }
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant, iconName, iconSize, animation = 'slideUp', ...props }) => {
-    const ref = useAnimation(animation);
+  ({ className, variant, iconName, iconSize, animation = 'slideUp', ...props }, ref) => {
+    const animRef = useAnimation(animation || '');
     const Icon = iconName ? iconMap[iconName] : null;
     const IconSize = Icon ? (iconSize ? iconSizeMap[iconSize] : iconSizeMap['md']) : null;
     return (
-      <div ref={ref} role="alert" className={cn(alertVariants({ variant }), className)} {...props}>
+      <div
+        ref={ref || animRef}
+        role="alert"
+        className={cn(alertVariants({ variant }), className)}
+        {...props}
+      >
         {Icon && <Icon className={cn(IconSize)} />}
         {props.children}
       </div>
