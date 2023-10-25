@@ -7,16 +7,16 @@ import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
 
 export const fontSans = FontSans({
-  subsets: ['latin'],
-  variable: '--font-sans',
+    subsets: ['latin'],
+    variable: '--font-sans',
 });
 
 export const SharedDefaults = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className={cn('dark bg-background font-sans antialiased', fontSans.variable)}>
-      <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
-        {children}
-      </ThemeProvider>
-    </div>
-  );
+    return (
+        <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+            <div className={cn('bg-background font-sans antialiased', fontSans.variable)}>
+                {children}
+            </div>
+        </ThemeProvider>
+    );
 };
