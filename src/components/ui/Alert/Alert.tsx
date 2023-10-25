@@ -1,5 +1,7 @@
-// /src/components/ui/Alert/Alert.stories.tsx
+// src/components/ui/Alert/Alert.stories.tsx
 import * as React from 'react';
+import { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import { cva, type VariantProps } from 'class-variance-authority';
 import {
   RocketIcon,
@@ -12,6 +14,7 @@ import {
   InfoCircledIcon,
 } from '@radix-ui/react-icons';
 import { cn } from '@/lib/utils';
+import { Animations, useAnimation } from '@/lib/animations';
 
 const alertVariants = cva(
   'relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',
@@ -51,15 +54,17 @@ const iconSizeMap = {
   xl: 'w-8 h-8',
 };
 
-interface AlertProps
+export interface AlertProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof alertVariants> {
   iconName?: keyof typeof iconMap;
   iconSize?: keyof typeof iconSizeMap;
+  animation?: Animations;
 }
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant, iconName, iconSize, ...props }, ref) => {
+  ({ className, variant, iconName, iconSize, animation = 'slideUp', ...props }) => {
+    const ref = useAnimation(animation);
     const Icon = iconName ? iconMap[iconName] : null;
     const IconSize = Icon ? (iconSize ? iconSizeMap[iconSize] : iconSizeMap['md']) : null;
     return (

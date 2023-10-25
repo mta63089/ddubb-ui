@@ -14,8 +14,8 @@ export const Default: Story = {
     iconName: 'info',
     children: (
       <>
-        <AlertTitle>{'this is a default alert title'}</AlertTitle>
-        <AlertDescription>{'this is a default alert description'}</AlertDescription>
+        <AlertTitle>{'Did you know?'}</AlertTitle>
+        <AlertDescription>{'That you are awesome? That is all.'}</AlertDescription>
       </>
     ),
   },
@@ -27,8 +27,8 @@ export const Destructive: Story = {
     iconName: 'warning',
     children: (
       <>
-        <AlertTitle>{'this is a destruction alert title'}</AlertTitle>
-        <AlertDescription>{'this is a default alert description'}</AlertDescription>
+        <AlertTitle>{'Warning'}</AlertTitle>
+        <AlertDescription>{'Your session has expired. Please log in again'}</AlertDescription>
       </>
     ),
   },
