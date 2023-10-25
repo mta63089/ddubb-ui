@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Shape } from './Shape';
 
@@ -12,7 +12,6 @@ type ShapePropsAndCustomArgs = React.ComponentProps<typeof Shape> & {
 };
 
 const meta: Meta<ShapePropsAndCustomArgs> = {
-  title: 'Animation Playground',
   component: Shape,
   parameters: {
     layout: 'centered',
@@ -57,9 +56,6 @@ export const Fade: Story = {
     return <Shape {...args} animation={animResolverResult} />;
   },
   args: {
-    baseAnimation: 'fade',
-    animationDuration: 1,
-    size: 'md',
-    circle: false,
+    children: '',
   },
 };

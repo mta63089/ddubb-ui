@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     iconName: 'info',
-    animation: 'fade-in-3s',
+    animation: 'fade-ease-power2',
     children: (
       <>
         <AlertTitle>{'Did you know?'}</AlertTitle>
@@ -25,6 +25,7 @@ export const Default: Story = {
 export const Destructive: Story = {
   args: {
     variant: 'destructive',
+    animation: 'slide-ease-power1',
     iconName: 'warning',
     children: (
       <>
